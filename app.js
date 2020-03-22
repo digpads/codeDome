@@ -6,12 +6,6 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-// app.use(async ctx => {
-//     console.log('hi https');
-//   });
-
-//http.createServer(app.callback()).listen(8081);
-
 const privateKey = fs.readFileSync(path.join(__dirname, './3639621.key'), 'utf8')
 const certificate = fs.readFileSync(path.join(__dirname, './3639621.pem'), 'utf8')
 
@@ -19,8 +13,6 @@ const options = {
     key:privateKey,
     cert:certificate
 }
-//https.createServer(options,app.callback()).listen(8082);
-
 
 // 创建https服务器实例
 const httpsServer = https.createServer(options, async (req, res) => {
