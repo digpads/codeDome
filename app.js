@@ -19,7 +19,7 @@ const options = {
     key:privateKey,
     cert:certificate
 }
-https.createServer(options,app.callback()).listen(443);
+https.createServer(options,app.callback()).listen(8082);
 
 
 // // 创建https服务器实例
