@@ -1,27 +1,23 @@
+const https = require('https');
+const fs = require('fs');
 const Koa = require('koa');
+const enforceHttps = require('koa-sslify').default;
 const app = new Koa();
+app.use(enforceHttps());
 
-// logger
+const options = {
+    key:fs.readFileSync('./3639621_www.zjsor.com.key'),
+    cert:fs.readFileSync('./3639621_www.zjsor.com.pen')
+}
 
-app.use(async (ctx, next) => {
-  await next();
-  const rt = ctx.response.get('X-Response-Time');
-  console.log(`show: ${ctx.method} ${ctx.url} - ${rt}`);
-});
-
-// x-response-time
-
-app.use(async (ctx, next) => {
-  const start = Date.now();
-  await next();
-  const ms = Date.now() - start;
-  ctx.set('X-Response-Time', `${ms}ms`);
-});
+https.createServer(options, app.callback()).listen(8081, () => {
+    ctx.body = 'Hello https World';
+  });
 
 // response
 
-app.use(async ctx => {
-  ctx.body = 'Hello World';
-});
+// app.use(async ctx => {
+//   ctx.body = 'Hello World';
+// });
 
-app.listen(8081);
+// app.listen(8081);
