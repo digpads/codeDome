@@ -6,6 +6,9 @@ const fs = require("fs");
 const path = require("path");
 const static = require('koa-static');
 
+route.get('/', ctx => {
+    ctx.body = "哈哈哈"
+})
 app.use(static(path.join(__dirname)+'/public/'));
 const routes = fs.readdirSync(path.resolve(__dirname,"./routes"));
 
@@ -20,4 +23,4 @@ app.use(route.get("*",require("./routes/error.js")))
 
 
 
-app.listen(8081)
+app.listen(80)
