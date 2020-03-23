@@ -5,10 +5,10 @@ const route = require("koa-route");
 const fs = require("fs");
 const path = require("path");
 const static = require('koa-static');
+const enforceHttps = require('koa-sslify').default;
+const http = require('http');
+const https = require('https');
 
-route.get('/', ctx => {
-    ctx.body = "哈哈哈"
-})
 app.use(static(path.join(__dirname)+'/public/'));
 const routes = fs.readdirSync(path.resolve(__dirname,"./routes"));
 
@@ -23,4 +23,4 @@ app.use(route.get("*",require("./routes/error.js")))
 
 
 
-app.listen(80)
+app.listen(8081)
