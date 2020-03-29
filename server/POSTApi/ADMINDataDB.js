@@ -1,12 +1,12 @@
-const maindata = require('../../model/maindata');
+// const maindata = require('../../model/maindata');
 
 
-const db ={
-    createData(params,callback){
-        return maindata.create(params)
-        .then(callback)
-    }
-}
+// const db ={
+//     createData(params,callback){
+//         return maindata.create(params)
+//         .then(callback)
+//     }
+// }
 
 
-module.exports = db
+// module.exports = db
