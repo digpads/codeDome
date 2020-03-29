@@ -1,9 +1,9 @@
-const Mdata = require('../../model/maindata');
+const maindata = require('../../model/maindata');
 
 
 const db ={
     createData(params,callback){
-        return Mdata.create(params)
+        return maindata.create(params)
         .then(callback)
     }
 }
