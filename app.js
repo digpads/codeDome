@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const app = new Koa();
+const bodyParser = require('koa-bodyparser');
 const http = require('http');
 const https = require('https');
 const route = require("koa-route");
@@ -12,21 +13,21 @@ const path = require('path');
 const mongoose = require("mongoose");
 const db = require('./database');
 
-
+app.use(bodyParser());
 app.use(enforceHttps());
 
 app.use(static(path.join(__dirname)+'/public/'));
 
-const routes = fs.readdirSync(path.resolve(__dirname,"./routes"));
-routes.forEach(v => {
+const ServerPost = fs.readdirSync(path.resolve(__dirname,"./server/POSTApi"));
+ServerPost.forEach(v => {
     const url = v.replace(/\.js$/i,"");
-    app.use(route.get(`/${url=="index"?"":url}`,require(`./routes/${v}`)))
+    app.use(route.post(`/${url=="index"?"":url}`,require(`./server/POSTApi/${v}`)))
 })
 
-const Server = fs.readdirSync(path.resolve(__dirname,"./server"));
-Server.forEach(v => {
+const ServerGet = fs.readdirSync(path.resolve(__dirname,"./server/GETApi"));
+ServerGet.forEach(v => {
     const url = v.replace(/\.js$/i,"");
-    app.use(route.get(`/${url=="index"?"":url}`,require(`./server/${v}`)))
+    app.use(route.get(`/${url=="index"?"":url}`,require(`./server/GETApi/${v}`)))
 })
 
 

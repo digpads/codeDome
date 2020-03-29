@@ -4,15 +4,14 @@ const sd = require('silly-datetime');
 
 
 const ADMINCreate = async function(ctx){
-
     const DataCreae = { 
-        name: ctx.request.query.name,
-        age:ctx.request.query.age ,
-        content:ctx.request.query.content
+        name: ctx.request.body.name,
+        age:ctx.request.body.age ,
+        content:ctx.request.body.content
     };
 
     db.dataSave(DataCreae,()=>{
-        console.log("ctx:",ctx.query);
+        console.log("ctxPost:",ctx.request);
     })
 
    const dataObj =await db.dataFind();

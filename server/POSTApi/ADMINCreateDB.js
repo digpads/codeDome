@@ -1,4 +1,4 @@
-const userinfo = require('../model/userinfo');
+const userinfo = require('../../model/userinfo');
 
 
 const db ={
