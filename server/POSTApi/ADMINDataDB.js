@@ -1,4 +1,4 @@
-const Mdata = require('../../model/mainData');
+const Mdata = require('../../model/maindata');
 
 
 const db ={
