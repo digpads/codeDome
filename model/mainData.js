@@ -9,15 +9,10 @@ const schema = new mongoose.Schema({
   title:{type:Number},
   newTig:{type:Array},
   setTig:{type:Array},
-  content:[
-      {
-          textCont:{type:String},
-          imgPath:{type:String}
-      }
-  ],
+  content:{type:String},
   charge:{type:String},
   price:{type:Number},
-  show:{type:Number}
+  show:{type:Number},
 },{timestamps: {createdAt: 'created', updatedAt: 'updated'}});
 
 const model = mongoose.model('maindata',schema);
