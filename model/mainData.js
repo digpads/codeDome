@@ -20,6 +20,6 @@ const schema = new mongoose.Schema({
   show:{type:Number}
 },{timestamps: {createdAt: 'created', updatedAt: 'updated'}});
 
-const model = mongoose.model('mainData',schema);
+const model = mongoose.model('maindata',schema);
 
 module.exports = model
